@@ -18,7 +18,7 @@ const SavedCandidates = () => {
   // Function to delete a candidate
   const deleteCandidate = (id: string) => { // Change to string if id is a string
     const updatedCandidates = savedCandidates.filter(
-      (candidate) => candidate.id !== id, // Ensure id type matches
+      (candidate) => candidate.id.toString() !== id, // Ensure id type matches
     );
     setSavedCandidates(updatedCandidates);
     localStorage.setItem("savedCandidates", JSON.stringify(updatedCandidates));
@@ -71,9 +71,9 @@ const SavedCandidates = () => {
                   </a>
                 </td>
                 <td>
-                  <button onClick={() => deleteCandidate(candidate.id)} aria-label={`Delete ${candidate.name}`}>
-                    Delete
-                  </button>
+                <button onClick={() => deleteCandidate(candidate.id.toString())}>
+                  Delete
+                </button>
                 </td>
               </tr>
             ))}
