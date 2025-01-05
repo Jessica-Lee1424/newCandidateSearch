@@ -1,14 +1,11 @@
-// interface for the Candidate objects returned by the API
-
 export interface Candidate {
-    id: number;
     login: string; // GitHub username
-    name?: string;
-    location?: string;
+    id: number;
     avatar_url: string; // Avatar image URL
-    email?: string;
     html_url: string; // URL to the GitHub profile
-    company?: string;
-    bio?: string;
-  }
-  
+    name?: string; // Optional, as it may not be available
+    location?: string; // Optional, as it may not be available
+    email?: string; // Optional, as it may not be available
+    company?: string; // Optional, as it may not be available
+    bio?: string; // Optional, as it may not be available
+}

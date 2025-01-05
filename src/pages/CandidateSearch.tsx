@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { searchGithub } from '../api/API';
-import { Candidate } from '../interfaces/Candidate.interface'; // Ensure Candidate is imported
+import { useState, useEffect } from "react";
+import { searchGithub } from "../api/API";
+import { Candidate } from "../interfaces/Candidate.interface"; // Ensure Candidate is imported
 
 const CandidateSearch = () => {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
@@ -9,7 +9,6 @@ const CandidateSearch = () => {
   const [loading, setLoading] = useState(false);
   const [noMoreCandidates, setNoMoreCandidates] = useState(false);
 
-  // Load saved candidates from localStorage on component mount
   useEffect(() => {
     const saved = localStorage.getItem("savedCandidates");
     if (saved) {
@@ -22,22 +21,35 @@ const CandidateSearch = () => {
     fetchCandidates();
   }, []);
 
-  // Fetch a list of random candidates
   const fetchCandidates = async () => {
     setLoading(true);
     try {
-      const data = await searchGithub();
+      const apiResponse = await searchGithub();
+      if (!Array.isArray(apiResponse)) {
+        throw new Error("Invalid API response: Expected an array of candidates");
+      }
+
+      const data: Candidate[] = apiResponse.map((item: any) => ({
+        id: item.id,
+        login: item.login,
+        avatar_url: item.avatar_url,
+        html_url: item.html_url,
+        name: item.name || null,
+        location: item.location || null,
+        email: item.email || null,
+        company: item.company || null,
+      }));
+
       setCandidates(data);
       setCurrentCandidate(data[0] || null);
       setNoMoreCandidates(data.length === 0);
     } catch (error) {
-      console.error("Error fetching candidates", error);
+      console.error("Error fetching candidates:", error);
     } finally {
       setLoading(false);
     }
   };
 
-  // Save candidate and move to the next
   const saveCandidate = () => {
     if (currentCandidate) {
       const updatedSavedCandidates = [...savedCandidates, currentCandidate];
@@ -47,12 +59,10 @@ const CandidateSearch = () => {
     moveToNextCandidate();
   };
 
-  // Skip the candidate and move to the next
   const skipCandidate = () => {
     moveToNextCandidate();
   };
 
-  // Move to the next candidate in the list or show no more candidates
   const moveToNextCandidate = () => {
     const nextIndex = candidates.indexOf(currentCandidate!) + 1;
     if (nextIndex < candidates.length) {
