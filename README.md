@@ -1,33 +1,42 @@
-# React + TypeScript + Vite
+This project serves to demonstrate how to call an API (in this instance, GitHub API) and render data in a browser. In the process, I gained a much deeper understanding of how the .env file interacts with API calls. It tooks several trials and errors to realize I needed to leave my .env in the root file so that vite could access it. When I had it in an environment folder, I kept getting an unathorized error when inspecting the network tab. Taking it out of a folder and saving it to the root allowed the token to be accessed.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# https://github.com/Jessica-Lee1424/newCandidateSearch
 
-Currently, two official plugins are available:
+## Table of Contents
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Testing](#testing)
+- [GitHub](#github)
+- [Email](#email)
+- [Render Website](#https://newcandidatesearch2.onrender.com/SavedCandidates)
+- [License](#license)
+- [Contributions](#contributions)
 
-* [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md), which uses [Babel](https://babeljs.io/) for Fast Refresh
-* [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc), which uses [SWC](https://swc.rs/) for Fast Refresh
+## Description
+This application allows a user to sort through job candidates using GitHub. The user can choose to skip over a proposed candidate that does not match what they are looking for or, if the candidate seems to have potential, save to the potential candidates page.
 
-## Expanding the ESLint configuration
+## Installation
+react
+vite
 
-If you're developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Usage
+For entertainment
 
-* Configure the top-level `parserOptions` property as follows:
+## Testing
+None needed
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## GitHub Username
+https://github.com/Jessica-Lee1424
 
-* Replace `plugin:@typescript-eslint/recommended` with `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`.
-* Optionally, add `plugin:@typescript-eslint/stylistic-type-checked`.
-* Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` and `plugin:react/jsx-runtime` to the `extends` list.
+## Email
+jgonnellaTEST@gmail.com
 
----
-© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+## Video Walk Through
+https://drive.google.com/file/d/1YYuBe9MYF96f7qpgT9QKMcg7xTKbs53X/view
+
+## License
+![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+## Contributions
+No one
